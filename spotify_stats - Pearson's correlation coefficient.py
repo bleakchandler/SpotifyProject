@@ -24,3 +24,12 @@ sns.heatmap(corr_matrix, annot=True, fmt=".2f", cmap='coolwarm')
 # fmt - format the annotations to two decimal places
 plt.title('Correlation between Features and Track Popularity')
 plt.show()
+
+
+# Pearson's correlation coefficient is a measure of the strength and direction of association that exists between two continuous variables. It is denoted as 
+# 𝑟
+# r and ranges from -1 to +1, where:
+
+# +1 indicates a perfect positive linear relationship,
+# -1 indicates a perfect negative linear relationship, and
+# 0 indicates no linear relationship between the variables.

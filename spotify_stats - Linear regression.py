@@ -44,3 +44,5 @@ print(f"Mean Squared Error: {mse}")
 # A MSE of 593.54 suggests that, on average, the predictions of the model are about 593.54 points off from the actual popularity scores when squared. Helps understand how well the model is predicting track popularity based on features like danceability, energy, and loudness.
 # A lower MSE indicates that the model's predictions are very close to the actual results, meaning the model has high predictive accuracy.
 # A higher MSE suggests that the predictions are often far off from the actual values, indicating lower accuracy.
+
+# Linear regression is a statistical method that models the relationship between a dependent variable and one or more independent variables by fitting a linear equation to observed data. 
