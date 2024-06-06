@@ -39,7 +39,6 @@
 <body>
     <div class="container">
         <h1>Spotify Decision Tree</h1>
-        <img id="decisionTreeImg" src="static/decision_tree.png" alt="Decision Tree Visualization">
         <p>Decision tree visualization for Spotify track popularity analysis.</p>
         <div class="explanation">
             <h2>Understanding the Decision Tree</h2>
@@ -53,6 +52,7 @@
             </ul>
             <p>Tracks with low instrumentalness and low acousticness tend to be more popular. High energy and high danceability also contribute to higher popularity.</p>
         </div>
+        <img id="decisionTreeImg" src="static/decision_tree.png" alt="Decision Tree Visualization">
     </div>
     <script>
         document.getElementById('decisionTreeImg').addEventListener('click', function() {
