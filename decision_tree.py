@@ -67,6 +67,5 @@ print(f"Accuracy: {accuracy}")
 # Plot the decision tree with increased figsize
 plt.figure(figsize=(40, 30))
 plot_tree(model, feature_names=X.columns, class_names=['Low', 'Medium', 'High'], filled=True, rounded=True)
-plt.savefig('decision_tree.png')
+plt.savefig('static/decision_tree.png')
 plt.show()
-
