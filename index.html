@@ -10,28 +10,16 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            overflow: hidden;
         }
         .container {
             text-align: center;
             padding: 20px;
             position: relative;
-            height: 100vh;
-            width: 100vw;
+        }
+        .decision-tree-container {
+            width: 100%;
             overflow: hidden;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.25s ease;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
-        img.zoomed {
-            transform: scale(2) translate(-50%, -50%);
+            position: relative;
         }
         .explanation {
             text-align: left;
@@ -42,6 +30,17 @@
         }
         h1 {
             margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+            position: relative;
+        }
+        img.zoomed {
+            transform: scale(2);
+            cursor: grab;
         }
     </style>
 </head>
@@ -61,24 +60,25 @@
             </ul>
             <p>Tracks with low instrumentalness and low acousticness tend to be more popular. High energy and high danceability also contribute to higher popularity.</p>
         </div>
-        <img id="decisionTreeImg" src="static/decision_tree.png" alt="Decision Tree Visualization">
+        <div class="decision-tree-container">
+            <img id="decisionTreeImg" src="static/decision_tree.png" alt="Decision Tree Visualization">
+        </div>
     </div>
     <script>
         const img = document.getElementById('decisionTreeImg');
         let isZoomed = false;
         let isDragging = false;
-        let startX, startY, scrollLeft, scrollTop;
+        let startX, startY;
 
         img.addEventListener('click', function() {
             isZoomed = !isZoomed;
             if (isZoomed) {
                 this.classList.add('zoomed');
-                this.style.cursor = 'grab';
             } else {
                 this.classList.remove('zoomed');
-                this.style.cursor = 'pointer';
-                this.style.left = '50%';
-                this.style.top = '50%';
+                this.style.left = '0';
+                this.style.top = '0';
+                this.style.transform = 'translate(0, 0)';
             }
         });
 
@@ -87,23 +87,17 @@
             isDragging = true;
             startX = e.pageX - img.offsetLeft;
             startY = e.pageY - img.offsetTop;
-            scrollLeft = img.offsetLeft;
-            scrollTop = img.offsetTop;
             img.style.cursor = 'grabbing';
         });
 
         img.addEventListener('mouseleave', () => {
-            if (isZoomed) {
-                isDragging = false;
-                img.style.cursor = 'grab';
-            }
+            isDragging = false;
+            img.style.cursor = 'grab';
         });
 
         img.addEventListener('mouseup', () => {
-            if (isZoomed) {
-                isDragging = false;
-                img.style.cursor = 'grab';
-            }
+            isDragging = false;
+            img.style.cursor = 'grab';
         });
 
         img.addEventListener('mousemove', (e) => {
