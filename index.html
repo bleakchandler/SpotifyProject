@@ -12,23 +12,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             background-color: #f4f4f4;
         }
         .container {
             text-align: center;
+            width: 80%;
         }
         img {
             max-width: 100%;
             height: auto;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+        }
+        img.zoomed {
+            transform: scale(2);
+        }
+        .explanation {
+            text-align: left;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Spotify Decision Tree</h1>
+        <img id="decisionTreeImg" src="static/decision_tree.png" alt="Decision Tree Visualization">
         <p>Decision tree visualization for Spotify track popularity analysis.</p>
-        <img src="static/decision_tree.png" alt="Decision Tree Visualization">
+        <div class="explanation">
+            <h2>Understanding the Decision Tree</h2>
+            <p>The decision tree shown above represents the factors that influence the popularity of Spotify tracks. Each node in the tree represents a feature and its threshold value, used to split the data. The final nodes, or leaves, represent the predicted popularity category of the tracks.</p>
+            <h3>Key Features:</h3>
+            <ul>
+                <li><b>Instrumentalness:</b> Indicates whether a track is instrumental.</li>
+                <li><b>Acousticness:</b> Measures the acoustic quality of a track.</li>
+                <li><b>Danceability:</b> Describes how suitable a track is for dancing.</li>
+                <li><b>Energy:</b> Represents the intensity and activity of a track.</li>
+            </ul>
+            <p>Tracks with low instrumentalness and low acousticness tend to be more popular. High energy and high danceability also contribute to higher popularity.</p>
+        </div>
     </div>
+    <script>
+        document.getElementById('decisionTreeImg').addEventListener('click', function() {
+            this.classList.toggle('zoomed');
+        });
+    </script>
 </body>
 </html>
