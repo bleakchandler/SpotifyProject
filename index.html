@@ -16,6 +16,9 @@
             text-align: center;
             padding: 20px;
             position: relative;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
         }
         img {
             max-width: 100%;
@@ -74,6 +77,8 @@
             } else {
                 this.classList.remove('zoomed');
                 this.style.cursor = 'pointer';
+                this.style.left = '50%';
+                this.style.top = '50%';
             }
         });
 
@@ -88,13 +93,17 @@
         });
 
         img.addEventListener('mouseleave', () => {
-            isDragging = false;
-            img.style.cursor = 'grab';
+            if (isZoomed) {
+                isDragging = false;
+                img.style.cursor = 'grab';
+            }
         });
 
         img.addEventListener('mouseup', () => {
-            isDragging = false;
-            img.style.cursor = 'grab';
+            if (isZoomed) {
+                isDragging = false;
+                img.style.cursor = 'grab';
+            }
         });
 
         img.addEventListener('mousemove', (e) => {
